@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Stream</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Dark background */
+            height: 100vh; /* Full viewport height */
+        }
+        #videoStream {
+            max-width: 90vw; /* Adjust as needed */
+            max-height: 90vh; /* Adjust as needed */
+            border: 2px solid #fff; /* Optional: adds a border around the video */
+            border-radius: 8px; /* Optional: rounds the corners of the border */
+            object-fit: cover; /* Ensures the video covers the frame */
+        }
+    </style>
+</head>
+<body>
+    <img id="videoStream" src="http://{{ip_address}}:8080/video" alt="Video Stream" />
+    <script>
+        (function refreshImage() {
+            const img = document.getElementById('videoStream');
+            const url = "http://{{ip_address}}:8080/video"; // Update if necessary
+            img.src = url + '?t=' + new Date().getTime(); // Add a timestamp to avoid caching
+            setTimeout(refreshImage, 1000); // Refresh every 1000ms
+        })();
+    </script>
+</body>
+</html>

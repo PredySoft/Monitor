@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recording Live Stream</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000; /* Dark background */
+            height: 100vh; /* Full viewport height */
+            color: #fff; /* White text color */
+            text-align: center;
+        }
+        #videoStream {
+            max-width: 90vw; /* Adjust as needed */
+            max-height: 70vh; /* Adjust as needed */
+            border: 2px solid #fff; /* Optional: adds a border around the video */
+            border-radius: 8px; /* Optional: rounds the corners of the border */
+            object-fit: cover; /* Ensures the video covers the frame */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Recording in Progress</h1>
+    <script>
+        (function blink() {
+            const dot = document.createElement('div');
+            dot.id = 'indicator'; // Assign the id to the div
+            dot.style.position = 'center'; // Change to 'absolute' for proper placement
+            dot.style.top = '50%';
+            dot.style.left = '50%';
+            dot.style.width = '100px';
+            dot.style.height = '100px';
+            dot.style.backgroundColor = 'red';
+            dot.style.borderRadius = '50%';
+            dot.style.animation = 'blink 2s infinite';
+            document.body.appendChild(dot);
+        })();
+
+        // Function to change the dot to a blinking blue square
+        function handleStopRecording() {
+            // Change the dot to a blinking blue square
+            const dot = document.getElementById('indicator');
+            dot.style.backgroundColor = 'blue';
+            dot.style.borderRadius = '0'; // Change to square
+            dot.style.animation = 'blink 1s linear infinite'; // Keep blinking but faster
+
+            // Delay the form submission slightly to show the change
+            setTimeout(function() {
+                document.getElementById('stopRecordingForm').submit();
+            }, 100); // 100ms delay
+        }
+    </script>
+    <p>You can stop the recording by clicking the button below.</p>
+    <form method="POST" action="/stop_recording">
+        <button type="submit" onclick="handleStopRecording()">Stop Recording</button>
+    </form><br>
+    Please do not close this page and even system console window.
+    Closing system console window will shut down whole process and your recording will be lost.
+    
+</body>
+</html>

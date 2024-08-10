@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter IP Address and Start Recording</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Dark background */
+            height: 100vh; /* Full viewport height */
+            color: #fff; /* White text color */
+            text-align: center;
+        }
+        #videoStream {
+            max-width: 90vw; /* Adjust as needed */
+            max-height: 90vh; /* Adjust as needed */
+            border: 2px solid #fff; /* Optional: adds a border around the video */
+            border-radius: 8px; /* Optional: rounds the corners of the border */
+            object-fit: cover; /* Ensures the video covers the frame */
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter IP Address and Select Recording Duration</h1>
+    <form method="POST" action="/start_recording">
+        <input type="text" name="ip_address" placeholder="Enter IP Address" required>
+        <select name="duration">
+            <option value="60">1 Minute Loop</option>
+            <option value="3600">1 Hour Loop</option>
+            <option value="86400">24 Hours Loop</option>
+            <option value="604800">1 Week Loop</option>
+        </select>
+        <button type="submit">Start Recording</button><br><br>
+        Please do not close this page and even system console window.
+        Closing system console window will shut down whole process and your recording will be lost.
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Dark background */
+            height: 100vh; /* Full viewport height */
+            color: #fff; /* White text color */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #videoStream {
+            max-width: 90vw; /* Adjust as needed */
+            max-height: 90vh; /* Adjust as needed */
+            border: 2px solid #fff; /* Optional: adds a border around the video */
+            border-radius: 8px; /* Optional: rounds the corners of the border */
+            object-fit: cover; /* Ensures the video covers the frame */
+            display: none; /* Initially hidden until loading completes */
+        }
+        input, select, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+        #loading {
+            display: none;
+            font-size: 18px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #loading .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        #replayButton, #downloadButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        #replayButton:hover, #downloadButton:hover {
+            background-color: #0056b3;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function showVideo() {
+            document.getElementById('loading').style.display = 'flex';
+
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('videoStream').style.display = 'block';
+                document.getElementById('replayButton').style.display = 'block';
+                document.getElementById('downloadButton').style.display = 'block';
+            }, 5000); // 5 seconds loading time
+        }
+
+        function replayVideo() {
+            var video = document.getElementById('videoStream');
+            video.currentTime = 0;
+            video.play();
+        }
+
+        function downloadVideo() {
+            var link = document.createElement('a');
+            link.href = "/static/output.avi"; // Replace with the correct file path
+            link.download = "output.avi"; // Replace with the correct file name
+            link.click();
+        }
+    </script>
+</head>
+<body onload="showVideo()">
+    <div id="loading">
+        <div class="spinner"></div>
+        <span>Loading file, please wait...</span>
+    </div>
+
+    <video id="videoStream" controls>
+        <source src="/static/output.mp4" type="video/mp4">
+        Your browser does not support the MP4 video format.
+    </video>
+
+    <button id="replayButton" onclick="replayVideo()">Replay</button>
+    <button id="downloadButton" onclick="downloadVideo()">Download</button>
+    <a href = "http://localhost:5000/"><button>Back</button></a><br>
+    If you want to close the app.
+    Close this window and also system console window related to this application.
+</body>
+</html>
