@@ -73,4 +73,4 @@ To ensure your setup remains secure:
 
 ---
 
-You're now ready to monitor your environment using your Android device as a security camera! Enjoy peace of mind with complete control over your recordings.
+You're now ready to monitor your environment using your Android device as a security camera and this app as desktop control! Enjoy peace of mind with complete control over your recordings.
