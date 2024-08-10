@@ -20,6 +20,14 @@ This application is designed to operate strictly within your local network. **Al
 - Ensure that your network is secured with a strong password. The video stream itself is not encrypted, so if someone else is using your Wi-Fi and knows your camera's IP address, they could potentially view the feed.
 
 ## Setup Instructions
+## Setup Instructions
+**Windows**
+1. Download Monitor.zip
+2. Extract all here
+3. Move extracted Monitor folder to your Program Files (Allow continue if prompted.)
+4. Copy Monitor shortcut to your Computer desktop.
+5. Double click to run the app.
+
 
 ### Android Device Preparation
 
