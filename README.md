@@ -21,8 +21,8 @@ This application is designed to operate strictly within your local network. **Al
 
 ## Setup Instructions
 **Windows**
-1. Download Monitor.zip
-2. Extract all here
+1. Download Monitor.zip from Releases (https://github.com/PredySoft/Monitor/releases)
+2. Extract all in download folder of your desktop.
 3. Move extracted Monitor folder to your Program Files (Allow continue if prompted.)
 4. Copy Monitor shortcut to your Computer desktop.
 5. Double click to run the app.
